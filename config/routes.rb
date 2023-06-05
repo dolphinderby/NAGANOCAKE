@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
-  namespace :public do
+  namespace :admin do
     get 'items/index'
+    get 'items/new'
     get 'items/show'
+    get 'items/edit'
   end
 
   scope module: :public do
@@ -11,6 +13,8 @@ Rails.application.routes.draw do
     get 'customers/my_page' => 'customers#show'
     get 'customers/my_page/edit' => 'customers#edit'
     get 'customers/confirm' => 'customers#confirm'
+    get 'items/index'
+    get 'items/show'
   end
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {

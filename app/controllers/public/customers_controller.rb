@@ -1,10 +1,11 @@
 class Public::CustomersController < ApplicationController
-  
+
   def show
-    @cuttomer = Customer.find(params[:id])
+   @customer = current_customer
   end
 
   def edit
+   @customer = current_customer
   end
 
   def confirm

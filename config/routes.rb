@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
 
-
   namespace :public do
     get 'items/index'
     get 'items/show'
   end
+
   scope module: :public do
     root :to => 'homes#top'
     get 'about' => 'homes#about'
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/confirm'
+    get 'customers/my_page' => 'customers#show'
+    get 'customers/my_page/edit' => 'customers#edit'
+    get 'customers/confirm' => 'customers#confirm'
   end
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {

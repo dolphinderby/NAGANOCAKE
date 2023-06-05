@@ -21,6 +21,7 @@
       <%= link_to new_customer_session_path do %>
         ログイン
       <% end %>
+      <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
     <%= yield %>
   </body>
 </html>

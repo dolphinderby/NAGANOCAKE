@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    get 'items/index'
+    get 'items' => 'items#index'
     get 'items/new'
     get 'items/show'
     get 'items/edit'
+    post 'items' => "items#create"
   end
 
   scope module: :public do
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
     get 'customers/confirm' => 'customers#confirm'
     get 'items/index'
     get 'items/show'
+    patch 'customers/my_page/update' => 'customers#update'
   end
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {

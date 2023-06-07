@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    get 'items' => 'items#index'
-    get 'items/new'
-    get 'items/show'
-    get 'items/edit'
-    post 'items' => "items#create"
+    #get 'items' => 'items#index'
+    #get 'items/new'
+    #get 'items/:id' => 'items#show'
+    #get 'items/:id/edit' => 'items#edit'
+    #post 'items' => 'items#create'
+    #patch 'items/:id' =>'items#update'
+    resources :items, except: [:destory]
   end
 
   scope module: :public do
@@ -14,8 +16,8 @@ Rails.application.routes.draw do
     get 'customers/my_page' => 'customers#show'
     get 'customers/my_page/edit' => 'customers#edit'
     get 'customers/confirm' => 'customers#confirm'
-    get 'items/index'
-    get 'items/show'
+    get 'items' => 'items#index'
+    get 'items/:id' => 'items#show'
     patch 'customers/my_page/update' => 'customers#update'
   end
 

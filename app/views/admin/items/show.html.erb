@@ -1,2 +1,10 @@
-<h1>商品詳細</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+<h2>商品詳細</h2>
+
+  <p>商品名</p>
+  <p><%= @item.name %></p>
+  <p>商品説名</p>
+  <p><%= @item.introduction %></p>
+  <p>税込価格(税抜価格)</p>
+  <td><%= (@item.price * 1.1).floor %>(<%= @item.price %>)</td>
+  
+  <%= link_to "編集する", edit_admin_item_path(@item.id) %>

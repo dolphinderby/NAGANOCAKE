@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     #post 'items' => 'items#create'
     #patch 'items/:id' =>'items#update'
     resources :items, except: [:destory]
+    resources :customers, only: [:index, :show, :edit, :update]
   end
 
   scope module: :public do
@@ -16,8 +17,9 @@ Rails.application.routes.draw do
     get 'customers/my_page' => 'customers#show'
     get 'customers/my_page/edit' => 'customers#edit'
     get 'customers/confirm' => 'customers#confirm'
-    get 'items' => 'items#index'
-    get 'items/:id' => 'items#show'
+    #get 'items' => 'items#index'
+    #get 'items/:id' => 'items#show'
+    resources :items, only: [:index, :show]
     patch 'customers/my_page/update' => 'customers#update'
   end
 

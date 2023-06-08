@@ -1,6 +1,6 @@
-<p>商品名</p>
-<p><%= @item.name %></p>
+<h2>商品詳細</h2>
+<%= image_tag @item.get_image %>
+<h3><%= @item.name %></h3>
 <p>商品説名</p>
 <p><%= @item.introduction %></p>
-<p>税込価格</p>
-<td>￥<%= (@item.price * 1.1).floor %></td>
+<td>￥<%= (@item.price * 1.1).floor %>(税込)</td>

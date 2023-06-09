@@ -4,3 +4,13 @@
 <p>購入には会員登録が必要になります。</p>
 
 <h1>新着商品</h1>
+<% @items.each do |item| %>
+  <%= link_to item_path(item.id) do %>
+    <%= image_tag item.get_image %>
+    <span><%= item.name %></span>
+  <% end %>
+  <td>￥<%= (item.price * 1.1).floor %></td>
+<% end %>
+<%= link_to items_path do %>
+  <p>すべての商品を見る></p>
+<% end %>

@@ -11,17 +11,61 @@
   </head>
 
   <body>
-    <h1>ながのCAKE</h1>
-      <%= link_to about_path do %>
-        About
+    <h1><%= link_to "ながのCAKE", root_path %></h1>
+      <% if customer_signed_in? %>
+        <p>
+          <%= link_to customers_my_page_path(current_customer) do %>
+            マイページ
+          <% end %>
+        </p>
+        <p>
+          <%= link_to items_path do %>
+            商品一覧
+          <% end %>
+        </p>
+        <p>
+          <%= link_to destroy_customer_session_path, method: :delete  do %>
+            ログアウト
+          <% end %>
+        </p>
+      <% elsif admin_signed_in? %>
+        <p>
+          <%= link_to admin_items_path do %>
+            商品一覧
+          <% end %>
+        </p>
+        <p>
+          <%= link_to admin_customers_path do %>
+            会員一覧
+          <% end %>
+        </p>
+        <p>
+          <%= link_to destroy_admin_session_path, method: :delete  do %>
+            ログアウト
+          <% end %>
+        </p>
+      <% else %>
+        <p>
+          <%= link_to about_path do %>
+            About
+          <% end %>
+        </p>
+        <p>
+          <%= link_to items_path do %>
+            商品一覧
+          <% end %>
+        </p>
+        <p>
+          <%= link_to new_customer_registration_path do %>
+            新規登録
+          <% end %>
+        </p>
+        <p>
+          <%= link_to new_customer_session_path do %>
+            ログイン
+          <% end %>
+        </p>
       <% end %>
-      <%= link_to new_customer_registration_path do %>
-        新規登録
-      <% end %>
-      <%= link_to new_customer_session_path do %>
-        ログイン
-      <% end %>
-      <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
     <%= yield %>
   </body>
 </html>

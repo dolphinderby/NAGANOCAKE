@@ -1,5 +1,7 @@
 <h1>会員一覧</h1>
 <% @customers.each do |customer| %>
+  <p>会員ID</p>
+  <span><%= customer.id %></span>
   <p>名前</p>
   <%= link_to admin_customer_path(customer.id) do %>
     <span><%= customer.last_name %><%= customer.first_name %></span>

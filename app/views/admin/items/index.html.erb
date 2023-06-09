@@ -1,6 +1,7 @@
 <h1>商品一覧</h1>
 <% @items.each do |item| %>
-
+  <p>商品ID</p>
+    <span><%= item.id %></span>
   <p>商品名</p>
   <%= link_to admin_item_path(item.id) do %>
     <span><%= item.name %></span>

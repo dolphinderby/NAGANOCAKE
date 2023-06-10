@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     #get 'items' => 'items#index'
     #get 'items/:id' => 'items#show'
     resources :items, only: [:index, :show]
+    resources :cart_items, only: [:index, :update, :destroy, :create]
     patch 'customers/my_page/update' => 'customers#update'
   end
 

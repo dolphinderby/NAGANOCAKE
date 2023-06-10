@@ -4,3 +4,6 @@
 <p>商品説名</p>
 <p><%= @item.introduction %></p>
 <td>￥<%= (@item.price * 1.1).floor %>(税込)</td>
+<%= form_with model: @item do |f| %>
+  <%= f.hidden_field :cart_item, :value => "カートに入れる" %>
+<% end %>

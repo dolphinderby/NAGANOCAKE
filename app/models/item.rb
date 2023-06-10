@@ -9,4 +9,6 @@ class Item < ApplicationRecord
     image.variant(resize_to_limit: [100, 100]).processed
   end
   
+  has_many :cart_items, dependent: :destroy
+  
 end

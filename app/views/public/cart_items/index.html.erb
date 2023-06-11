@@ -1,10 +1,12 @@
 <h1>ショッピングカート</h1>
-<% @items.each do |item| %>
+<% @cart_items.each do |cart_item| %>
   <p>商品名</p>
-  <p><%= item.name %></p>
+  <p><%= cart_item.name %></p>
   <p>単価（税込）</p>
-  <p>%= (item.price * 1.1).floor %></p>
+  <p><%= (cart_item.price * 1.1).floor %></p>
   <p>数量</p>
+  <p><%= cart_item.amount %></p>
   <p>小計</p>
+  <p><%= (cart_item.item.price * 1.1).floor * cart_item.amount %></p>
 
 <% end %>

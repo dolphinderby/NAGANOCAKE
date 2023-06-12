@@ -1,12 +1,14 @@
 <h1>ショッピングカート</h1>
 <% @cart_items.each do |cart_item| %>
   <p>商品名</p>
-  <p><%= cart_item.name %></p>
+  <p><%= cart_item.item.name %></p>
   <p>単価（税込）</p>
-  <p><%= (cart_item.price * 1.1).floor %></p>
+  <p><%= cart_item.item.with_tax_price%></p>
   <p>数量</p>
   <p><%= cart_item.amount %></p>
   <p>小計</p>
-  <p><%= (cart_item.item.price * 1.1).floor * cart_item.amount %></p>
+  <p><%= cart_item.subtotal %></p>
+  <p>合計金額</p>
+  <% @total_price +=  cart_item.subtotal %>
 
 <% end %>

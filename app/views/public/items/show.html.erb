@@ -3,8 +3,8 @@
 <h3><%= @item.name %></h3>
 <p>商品説名</p>
 <p><%= @item.introduction %></p>
-<td>￥<%= (@item.price * 1.1).floor %>(税込)</td>
-<%= form_with model: @item do |f| %>
+<td>￥<%= @item.with_tax_price %>(税込)</td>
+<%= form_with model: @cart_item do |f| %>
   <%= f.hidden_field :item_id, :value => @item.id %>
   <%= f.select :amount, *[1..99] %>
   <%= f.submit "カートに入れる" %>

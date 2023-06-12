@@ -6,5 +6,5 @@
     <%= image_tag item.get_image %>
     <span><%= item.name %></span>
   <% end %>
-  <td>￥<%= (item.price * 1.1).floor %></td>
+  <td>￥<%= item.with_tax_price %></td>
 <% end %>

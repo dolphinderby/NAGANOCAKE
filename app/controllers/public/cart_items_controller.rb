@@ -8,6 +8,9 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy
+    @cart_items = current_customer.cart_items.all
+    cart_item.destroy
+    redirect_to cart_items_path
   end
 
   def destroy_all

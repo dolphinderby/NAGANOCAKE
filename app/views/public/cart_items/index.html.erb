@@ -1,5 +1,5 @@
 <h1>ショッピングカート</h1>
-<%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, "data-confirm" => "本当に空にしますか？" %>
+<%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, "data-confirm" => "本当に空にしますか？" %>
 <% @cart_items.each do |cart_item| %>
   <p>商品名</p>
   <p><%= cart_item.item.name %></p>

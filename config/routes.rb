@@ -16,14 +16,13 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
     get 'customers/my_page' => 'customers#show'
     get 'customers/my_page/edit' => 'customers#edit'
+    patch 'customers/my_page/update' => 'customers#update'
     get 'customers/confirm' => 'customers#confirm'
     patch 'customers/withdraw' => 'customers#withdraw'
-    #get 'items' => 'items#index'
-    #get 'items/:id' => 'items#show'
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :destroy, :create]
     patch 'cart_items/:id' => 'cart_items#update', as: :cart_item_update
-    patch 'customers/my_page/update' => 'customers#update'
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
   end
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {

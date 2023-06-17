@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'orders/new'
+    get 'orders/index'
+    get 'orders/show'
+    get 'orders/complete'
+  end
   namespace :admin do
     #get 'items' => 'items#index'
     #get 'items/new'
@@ -22,7 +28,9 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items, only: [:index, :destroy, :create, :update]
-
+    resources :order, only: [:new, :index, :show, :create]
+    get 'orders/complete' => 'orders#complete'
+    
   end
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {

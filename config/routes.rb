@@ -20,14 +20,9 @@ Rails.application.routes.draw do
     get 'customers/confirm' => 'customers#confirm'
     patch 'customers/withdraw' => 'customers#withdraw'
     resources :items, only: [:index, :show]
-    resources :cart_items, only: [:index, :destroy, :create]
-    resources :cart_items do
-      collection do
-      delete 'destroy_all'
-      end
-    end
-    patch 'cart_items/:id' => 'cart_items#update', as: :cart_item_update
-    #delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+    resources :cart_items, only: [:index, :destroy, :create, :update]
+
   end
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {

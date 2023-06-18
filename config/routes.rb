@@ -28,9 +28,9 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items, only: [:index, :destroy, :create, :update]
-    resources :order, only: [:new, :index, :show, :create]
+    resources :orders, only: [:new, :index, :show, :create]
     get 'orders/complete' => 'orders#complete'
-    
+
   end
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {

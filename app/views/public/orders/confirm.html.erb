@@ -1,0 +1,23 @@
+<p>注文情報確認</p>
+<% @cart_items.each do |cart_item| %>
+  <p>商品名</p>
+  <%= cart.item.name %>
+  <p>単価（税込）</p>
+  <%= cart.item.price %>
+  <p>数量</p>
+  <%= cart.item.amount %>
+  <p>小計</p>
+  <%= (cart.item.price*cart.item.amount) %>
+<% end %>
+
+<p>送料</p>
+<%= @postage %>
+<p>商品合計</p>
+<%= @total_price +=  cart_item.subtotal %>
+<p>請求金額</p>
+<%= @total_price + @postage %>
+
+<p>支払方法</p>
+<%= @order.payment_method %>
+<p>お届け先</p>
+<%= @order.address %>

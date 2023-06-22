@@ -29,7 +29,7 @@ class Public::CartItemsController < ApplicationController
     else
       @cart_item = CartItem.new(cart_item_params)
       @cart_item.customer_id = current_customer.id
-      @cart_item.save
+      @cart_item.save!
     end
     redirect_to cart_items_path
   end

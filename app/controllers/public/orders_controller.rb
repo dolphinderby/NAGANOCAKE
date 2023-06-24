@@ -5,6 +5,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @order_items = OrderItem.all
   end
 
   def show
@@ -17,7 +18,7 @@ class Public::OrdersController < ApplicationController
     cart_items = current_customer.cart_items.all
     @order = current_customer.orders.new(order_params)
     @order.postage = 800
-    @order.save!
+    @order.save
     cart_items.each do |cart|
       order_item = OrderItem.new
       order_item.item_id = cart.item_id

@@ -1,2 +1,15 @@
-<h1>Public::Orders#index</h1>
+<h1>注文履歴一覧</h1>
+<% @orders.each do |order| %>
+  <p>注文日</p>
+  <%= order.created_at %>
+  <p>配送先</p>
+  <%= order.postal_code %>
+  <%= order.address %>
+  <%= order.name %>
+  <p>注文商品</p>
+  <%= order.item_id %>
+  <p>支払金額</p>
+  <%= order.item.purchase_price %>
+  <%= link_to "注文詳細", order_path(order_item.id) %>
+<% end %>
 <p>Find me in app/views/public/orders/index.html.erb</p>

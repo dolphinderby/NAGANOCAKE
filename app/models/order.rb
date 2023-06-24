@@ -5,4 +5,6 @@ class Order < ApplicationRecord
     item.with_tax_price * amount
   end
 
+  belongs_to :customer
+
 end

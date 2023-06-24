@@ -16,17 +16,18 @@ class Public::OrdersController < ApplicationController
   def create
     cart_items = current_customer.cart_items.all
     @order = current_customer.orders.new(order_params)
+    @order.postage = 800
     @order.save!
     cart_items.each do |cart|
       order_item = OrderItem.new
       order_item.item_id = cart.item_id
       order_item.order_id = @order.id
       order_item.amount = cart.amount
-      order_item.purchase_price = order.payment_method
+      order_item.purchase_price = cart.item.price
       order_item.save
     end
-    redirect_to orders_complete_path
     cart_items.destroy_all
+    redirect_to orders_complete_path
   end
 
   def confirm
@@ -35,11 +36,13 @@ class Public::OrdersController < ApplicationController
     @postage = 800
     @order = Order.new(order_params)
     if params[:order][:address_number] == "1"
+      @order.name = current_customer.fullname
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
-      @order.name = current_customer.last_name, current_customer.first_name
     elsif params[:order][:address_number] == "2"
-      address_new = current_customer.addresses.new(address_params)
+      @order.name = params[:order][:address_name]
+      @order.postal_code = params[:order][:postal_code]
+      @order.address = params[:order][:address]
     end
   end
 

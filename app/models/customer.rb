@@ -8,6 +8,10 @@ class Customer < ApplicationRecord
     super && (is_deleted == false)
   end
 
+  def fullname
+    last_name + " " + first_name
+  end
+
   has_many :cart_items, dependent: :destroy
   has_many :orders
 

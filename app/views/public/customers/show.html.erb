@@ -12,3 +12,5 @@
 <p><%= @customer.telephone_number %></p>
 <p>メールアドレス</p>
 <p><%= @customer.email %></p>
+<p>注文履歴</p>
+<%= link_to "一覧を見る", orders_path(@customer.id) %>

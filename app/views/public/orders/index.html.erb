@@ -1,14 +1,16 @@
 <h1>注文履歴一覧</h1>
-<% @order_items.each do |order_item| %>
+<% @orders.each do |order| %>
   <p>注文日</p>
-  <%= order_item.created_at %>
+  <%= order.created_at.strftime('%Y/%m/%d') %>
   <p>配送先</p>
-  <%= order_item.order_id %>
-
+  <%= order.postal_code %>
+  <%= order.address %>
+  <%= order.name %>
   <p>注文商品</p>
-  <%= order_item.item_id %>
+  <% order.items.each do |item| %>
+    <p><%= item.name %></p>
+  <% end %>
   <p>支払金額</p>
-  <%= order_item.purchase_price %>
-  <%= link_to "注文詳細", order_path(order_item.id) %>
+  <p><%= order.total_price + order.postage %>円</p>
+  <%= link_to "注文詳細", order_path(order.id) %>
 <% end %>
-<p>Find me in app/views/public/orders/index.html.erb</p>

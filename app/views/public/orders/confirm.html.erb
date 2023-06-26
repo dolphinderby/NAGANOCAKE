@@ -3,11 +3,11 @@
   <p>商品名</p>
   <%= cart.item.name %>
   <p>単価（税込）</p>
-  <%= cart.item.price %>
+  <%= cart.item.with_tax_price %>
   <p>数量</p>
   <%= cart.amount %>
   <p>小計</p>
-  <%= (cart.item.price*cart.amount) %>
+  <%= (cart.item.with_tax_price*cart.amount) %>
 <% end %>
 
 <p>送料</p>

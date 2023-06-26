@@ -5,10 +5,13 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @order_items = OrderItem.all
+    @orders = current_customer.orders
+    @postage = 800
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_item = OrderItem.find(params[:id])
   end
 
   def complete

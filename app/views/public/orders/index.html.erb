@@ -11,6 +11,6 @@
     <p><%= item.name %></p>
   <% end %>
   <p>支払金額</p>
-  <p><%= order.total_price + order.postage %>円</p>
+  <p><%= order.total_price %>円</p>
   <%= link_to "注文詳細", order_path(order.id) %>
 <% end %>

@@ -10,13 +10,19 @@
   <%= @order.payment_method_i18n %>
 <h3>請求情報</h3>
   <p>商品金額</p>
-  <%= @order.total_price.to_s(:delimited) %>
+  <%= @order.total_price - @order.postage %>
   <p>配送料</p>
   <%= @order.postage %>
   <p>合計金額</p>
-  <%= @order.total_price.to_i + @order.postage %>
+  <%= @order.total_price.to_s(:delimited) %>
 <h3>注文内容</h3>
+  <% @order_items.each do |order_item| %>
   <p>商品</p>
+  <%= order_item.item.name %>
   <p>単価（税込）</p>
+  <%= order_item.item.with_tax_price %>
   <p>個数</p>
+  <%= order_item.amount %>
   <p>小計</p>
+  <%= order_item.item.with_tax_price * order_item.amount %>
+  <% end %>

@@ -1,7 +1,7 @@
 class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
-    @total_price = params[:total_price]
+    @subtotal = params[:total_price]
   end
 
   def index
@@ -11,7 +11,7 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_item = OrderItem.find(params[:id])
+    @order_items = OrderItem.where(order_id: @order.id)
   end
 
   def complete
@@ -36,7 +36,7 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @cart_items = current_customer.cart_items.all
-    @total_price = params[:order][:total_price]
+    @subtotal = params[:order][:total_price]
     @postage = 800
     @order = Order.new(order_params)
     if params[:order][:address_number] == "1"

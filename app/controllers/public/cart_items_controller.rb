@@ -1,7 +1,7 @@
 class Public::CartItemsController < ApplicationController
   def index
     @cart_items = current_customer.cart_items.all
-    @total_price = 0
+    @subtotal = 0
   end
 
   def update

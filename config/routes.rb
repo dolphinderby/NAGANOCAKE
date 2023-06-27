@@ -1,20 +1,10 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'orders/new'
-    get 'orders/index'
-    get 'orders/show'
-    get 'orders/complete'
-  end
   namespace :admin do
-    #get 'items' => 'items#index'
-    #get 'items/new'
-    #get 'items/:id' => 'items#show'
-    #get 'items/:id/edit' => 'items#edit'
-    #post 'items' => 'items#create'
-    #patch 'items/:id' =>'items#update'
+    get 'homes/top'
     resources :items, except: [:destory]
     resources :customers, only: [:index, :show, :edit, :update]
+    resources :orders, only: [:show]
   end
 
   scope module: :public do

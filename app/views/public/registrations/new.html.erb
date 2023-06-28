@@ -5,14 +5,14 @@
 
   <div class="field">
     <%= f.label :"名前" %><br />
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
-    <%= f.text_field :first_name, autocomplete: "first_name" %>
+    <p>(姓)<%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %></p>
+    <p>(名)<%= f.text_field :first_name, autocomplete: "first_name" %></p>
   </div>
 
   <div class="field">
     <%= f.label :"フリガナ" %><br />
-    <%= f.text_field :last_name_kana, autocomplete: "last_name_kana" %>
-    <%= f.text_field :first_name_kana, autocomplete: "first_name_kana" %>
+    <p>(セイ)<%= f.text_field :last_name_kana, autocomplete: "last_name_kana" %></p>
+    <p>(メイ)<%= f.text_field :first_name_kana, autocomplete: "first_name_kana" %></p>
   </div>
 
   <div class="field">

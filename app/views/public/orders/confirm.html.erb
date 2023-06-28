@@ -1,6 +1,7 @@
 <h1>注文情報確認</h1>
 <% @cart_items.each do |cart| %>
   <p>商品名</p>
+  <%= image_tag cart.item.get_image %>
   <%= cart.item.name %>
   <p>単価（税込）</p>
   <%= cart.item.with_tax_price %>

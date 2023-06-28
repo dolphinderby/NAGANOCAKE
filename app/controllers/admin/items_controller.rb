@@ -1,6 +1,6 @@
 class Admin::ItemsController < ApplicationController
   def index
-    @items = Item.all
+    @items = Item.page(params[:page])
   end
 
   def new
@@ -25,7 +25,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     if @item.update(item_params)
       flash[:notice] = "You have updated user successfully."
-      redirect_to admin_items_path(@item.id)
+      redirect_to admin_item_path(@item.id)
     else
       render :edit
     end

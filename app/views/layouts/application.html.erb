@@ -45,8 +45,13 @@
           <% end %>
         </p>
         <p>
+          <%= link_to admin_root_path do %>
+            注文履歴一覧
+          <% end %>
+        </p>
+        <p>
           <%= link_to destroy_admin_session_path, method: :delete  do %>
-            ログアウト
+            管理者ログアウト
           <% end %>
         </p>
       <% else %>

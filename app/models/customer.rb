@@ -4,13 +4,13 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  def active_for_authentication?
-    super && (is_deleted == false)
-  end
+
 
   def fullname
     last_name + " " + first_name
   end
+
+  enum is_deleted: { deleted: true, active: false }
 
   has_many :cart_items, dependent: :destroy
   has_many :orders

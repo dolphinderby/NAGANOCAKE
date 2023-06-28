@@ -13,4 +13,6 @@
 <p><%= @customer.telephone_number %></p>
 <p>メールアドレス</p>
 <p><%= @customer.email %></p>
+<p>会員ステータス</p>
+<p><%= @customer.is_deleted_i18n %></p>
 <%= link_to "編集する", edit_admin_customer_path(@customer.id) %>

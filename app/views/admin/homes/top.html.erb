@@ -1,2 +1,15 @@
 <h1>注文履歴一覧</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<% @orders.each do |order| %>
+<% @total_amount  = 0 %>
+  <p>購入日時</p>
+  <%= link_to admin_order_path(order.id) do %>
+    <%= order.created_at.strftime('%Y/%m/%d') %>
+  <% end %>
+  <p>購入者</p>
+  <%= order.name %>
+  <p>注文個数</p>
+  <% order.order_items.each do |order_item| %>
+    <% @total_amount += order_item.amount %>
+  <% end %>
+  <%= @total_amount %>
+<% end %>

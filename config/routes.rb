@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    get 'homes/top'
+    root :to => 'homes#top'
     resources :items, except: [:destory]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:show]

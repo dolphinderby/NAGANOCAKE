@@ -7,7 +7,9 @@ before_action :customer_state, only: [:create]
   # def new
   #   super
   # end
-
+  def after_sign_in_path_for(resource)
+    customers_my_page_path
+  end
   # POST /resource/sign_in
   # def create
   #   super
@@ -23,7 +25,7 @@ before_action :customer_state, only: [:create]
   def customer_state
     @customer = Customer.find_by(email: params[:customer][:email])
     return if !@customer
-    if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == true)
+    if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == "deleted")
       flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
       redirect_to new_customer_registration_path
     end

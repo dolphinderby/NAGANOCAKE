@@ -10,6 +10,7 @@ before_action :customer_state, only: [:create]
   def after_sign_in_path_for(resource)
     root_path
   end
+
   # POST /resource/sign_in
   # def create
   #   super

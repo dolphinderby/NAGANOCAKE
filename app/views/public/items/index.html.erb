@@ -1,17 +1,20 @@
 <div class="container">
-  <div class="row">
-    <div class="px-3 mx-auto">
-      <h1>商品一覧</h1>
-      <p>(全<%= @items.count %>件)</p>
-      <% @items.each do |item| %>
-        <%= link_to item_path(item.id) do %>
-          <%= image_tag item.get_image %>
+  <div class="px-3 mx-auto">
+    <h1>商品一覧</h1>
+    <a>(全<%= @items.count %>件)</a>
+      <div class="row row-cols-4">
+        <% @items.each do |item| %>
+          <div class="col">
+            <a><%= link_to item_path(item.id) do %>
+                <%= image_tag item.get_image %>
+              <% end %>
+            </a><br>
+            <a>商品名</a>
+            <a><%= item.name %></a><br>
+            <a>￥<%= item.with_tax_price %></a>
+          </div>
         <% end %>
-        <p>商品名</p>
-        <p><%= item.name %></p>
-        <p>￥<%= item.with_tax_price %></p>
-      <% end %>
-      <%= paginate @items %>
-    </div>
+      </div>
+    <%= paginate @items %>
   </div>
 </div>

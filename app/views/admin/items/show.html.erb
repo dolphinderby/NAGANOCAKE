@@ -1,11 +1,21 @@
-<h2>商品詳細</h2>
-
-  <%= image_tag @item.get_image %>
-  <p>商品名</p>
-  <p><%= @item.name %></p>
-  <p>商品説明</p>
-  <p><%= @item.introduction %></p>
-  <p>税込価格(税抜価格)</p>
-  <td><%= @item.with_tax_price %>(<%= @item.price %>)円</td>
-
-  <%= link_to "編集する", edit_admin_item_path(@item.id) %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-11 offset-md-1">
+      <h2>商品詳細</h2>
+        <%= image_tag @item.get_image %>
+        <nav class="nav">
+          <a>商品名</a>
+          <a><%= @item.name %></a>
+        </nav><br>
+        <nav class="nav">
+          <a>商品説明</a>
+          <a><%= @item.introduction %></a>
+        </nav><br>
+        <nav class="nav">
+          <a>税込価格(税抜価格)</a>
+          <a><%= @item.with_tax_price %>(<%= @item.price %>)円</a>
+        </nav><br>
+        <%= link_to "編集する", edit_admin_item_path(@item.id) %>
+    </div>
+  </div>
+</div>

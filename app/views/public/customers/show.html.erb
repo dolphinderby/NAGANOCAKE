@@ -1,17 +1,37 @@
-<h2>マイページ</h2>
-<p>登録情報</p>
-<%= link_to "編集する", customers_my_page_edit_path(@customer.id) %>
-<p>氏名</p>
-<p><%= @customer.last_name %><%= @customer.first_name %></p>
-<p>カナ</p>
-<p><%= @customer.last_name_kana %><%= @customer.first_name_kana %></p>
-<p>郵便番号</p>
-<p><%= @customer.postal_code %></p>
-<p>住所</p>
-<p><%= @customer.address %></p>
-<p>電話番号</p>
-<p><%= @customer.telephone_number %></p>
-<p>メールアドレス</p>
-<p><%= @customer.email %></p>
-<p>注文履歴</p>
-<%= link_to "一覧を見る", orders_path(@customer.id) %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-11 offset-md-1">
+      <h2>マイページ</h2>
+      <a>登録情報</a>
+      <a><%= link_to "編集する", customers_my_page_edit_path(@customer.id) %></a>
+      <nav class="nav">
+        <a>氏名</a>
+        <a><%= @customer.last_name %><%= @customer.first_name %></a>
+      </nav><br>
+      <nav class="nav">
+        <a>カナ</a>
+        <a><%= @customer.last_name_kana %><%= @customer.first_name_kana %></a>
+      </nav><br>
+      <nav class="nav">
+        <a>郵便番号</a>
+        <a><%= @customer.postal_code %></a>
+      </nav><br>
+      <nav class="nav">
+        <a>住所</a>
+        <a><%= @customer.address %></a>
+      </nav><br>
+      <nav class="nav">
+        <a>電話番号</a>
+        <a><%= @customer.telephone_number %></a>
+      </nav><br>
+      <nav class="nav">
+        <a>メールアドレス</a>
+        <a><%= @customer.email %></a>
+      </nav><br>
+      <nav class="nav">
+        <a>注文履歴</a>
+        <a><%= link_to "一覧を見る", orders_path(@customer.id) %></a>
+      </nav><br>
+    </div>
+  </div>
+</div>

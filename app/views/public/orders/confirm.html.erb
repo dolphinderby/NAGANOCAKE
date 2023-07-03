@@ -26,24 +26,24 @@
         </tbody>
       </table>
     </div>
-      <div class="col-md-3">
-        <tbody>
-          <table border="1">
-            <tr>
-              <td>送料</td>
-              <td><%= @postage %></td>
-            </tr>
-            <tr>
-              <td>商品合計</td>
-              <td><%= @subtotal %></td>
-            </tr>
-            <tr>
-              <td>請求金額</td>
-              <td><%= @subtotal.to_i + @postage %></td>
-            </tr>
-          </table>
-        </tbody>
-      </div>
+    <div class="col-md-3">
+      <tbody>
+        <table border="1">
+          <tr>
+            <td>送料</td>
+            <td><%= @postage %></td>
+          </tr>
+          <tr>
+            <td>商品合計</td>
+            <td><%= @subtotal %></td>
+          </tr>
+          <tr>
+            <td>請求金額</td>
+            <td><%= @subtotal.to_i + @postage %></td>
+          </tr>
+        </table>
+      </tbody>
+    </div>
         <table>
         <tr>
           <td>支払方法</td>

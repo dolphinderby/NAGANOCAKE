@@ -1,31 +1,54 @@
-<h1>ショッピングカート</h1>
-<% if @cart_items.count == 0 %>
-  <p>カートに商品がありません</p>
-<% else %>
-  <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, "data-confirm" => "本当に空にしますか？" %>
-  <% @cart_items.each do |cart_item| %>
-    <p>商品名</p>
-    <p><%= image_tag cart_item.item.get_image %></p>
-    <p><%= cart_item.item.name %></p>
-    <p>単価（税込）</p>
-    <p><%= cart_item.item.with_tax_price%></p>
-    <p>数量</p>
-      <%= form_with model: cart_item do |f| %>
-        <%= f.select :amount, *[1..99] %>
-        <%= f.submit "変更" %>
-      <% end %>
-    <p>小計</p>
-    <p><%= cart_item.subtotal %></p>
-    <% @subtotal +=  cart_item.subtotal %>
-    <%= link_to "削除する", cart_item_path(cart_item), method: :delete, "data-confirm" => "本当に消しますか？" %>
-  <% end %>
-  <p>合計金額</p>
-  <%= @subtotal %><br>
-  <%= link_to "買い物を続ける", root_path %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-11 offset-md-1">
+      <h1>ショッピングカート</h1>
+      <% if @cart_items.count == 0 %>
+        <p>カートに商品がありません</p>
+      <% else %>
+      <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, "data-confirm" => "本当に空にしますか？" %>
+      <table border="1" width="100%">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+            <tr>
+              <td><%= image_tag cart_item.item.get_image %>
+              <%= cart_item.item.name %>
+              </td>
+              <td><%= cart_item.item.with_tax_price%></td>
+              <td>
+                <%= form_with model: cart_item do |f| %>
+                  <%= f.select :amount, *[1..99] %>
+                  <%= f.submit "変更" %>
+                <% end %>
+              </td>
+              <td><%= cart_item.subtotal %></td>
+              <% @subtotal +=  cart_item.subtotal %>
+              <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, "data-confirm" => "本当に消しますか？" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <table border="1" width="20%">
+        <tr>
+          <td>合計金額</td>
+          <td><%= @subtotal %></td>
+        </tr>
+      </table>
+        <%= link_to "買い物を続ける", root_path %>
 
-  <%= form_with url: '/orders/new', method: :get do |f| %>
-    <%= f.hidden_field :total_price, :value => @subtotal %>
-    <%= f.submit "情報入力に進む" %>
-  <% end %>
-<% end %>
-    
+        <%= form_with url: '/orders/new', method: :get do |f| %>
+          <%= f.hidden_field :total_price, :value => @subtotal %>
+          <%= f.submit "情報入力に進む" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

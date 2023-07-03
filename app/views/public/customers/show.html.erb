@@ -4,34 +4,38 @@
       <h2>マイページ</h2>
       <a>登録情報</a>
       <a><%= link_to "編集する", customers_my_page_edit_path(@customer.id) %></a>
-      <nav class="nav">
-        <a>氏名</a>
-        <a><%= @customer.last_name %><%= @customer.first_name %></a>
-      </nav><br>
-      <nav class="nav">
-        <a>カナ</a>
-        <a><%= @customer.last_name_kana %><%= @customer.first_name_kana %></a>
-      </nav><br>
-      <nav class="nav">
-        <a>郵便番号</a>
-        <a><%= @customer.postal_code %></a>
-      </nav><br>
-      <nav class="nav">
-        <a>住所</a>
-        <a><%= @customer.address %></a>
-      </nav><br>
-      <nav class="nav">
-        <a>電話番号</a>
-        <a><%= @customer.telephone_number %></a>
-      </nav><br>
-      <nav class="nav">
-        <a>メールアドレス</a>
-        <a><%= @customer.email %></a>
-      </nav><br>
+      <tbody>
+        <table border="1" width="80%">
+          <tr>
+            <td width="30%">氏名</td>
+            <td width="70%"><%= @customer.last_name %><%= @customer.first_name %></td>
+          </tr>
+          <tr>
+            <td>カナ</td>
+            <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
+          </tr>
+          <tr>
+            <td>郵便番号</td>
+            <td><%= @customer.postal_code %></td>
+          </tr>
+          <tr>
+            <td>住所</td>
+            <td><%= @customer.address %></td>
+          </tr>
+          <tr>
+            <td>電話番号</td>
+            <td><%= @customer.telephone_number %></td>
+          </tr>
+          <tr>
+            <td>メールアドレス</td>
+            <td><%= @customer.email %></td>
+          </tr>
+        </table>
+      </tbody>
       <nav class="nav">
         <a>注文履歴</a>
         <a><%= link_to "一覧を見る", orders_path(@customer.id) %></a>
-      </nav><br>
+      </nav>
     </div>
   </div>
 </div>

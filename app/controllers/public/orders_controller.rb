@@ -41,6 +41,7 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items.all
     @subtotal = params[:order][:total_price]
     @postage = 800
+    @subtotal = 0
     @order = Order.new(order_params)
     if params[:order][:address_number] == "1"
       @order.name = current_customer.fullname

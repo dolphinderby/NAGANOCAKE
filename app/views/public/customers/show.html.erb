@@ -3,7 +3,7 @@
     <div class="col-md-11 offset-md-1">
       <h2>マイページ</h2>
       <a>登録情報</a>
-      <a><%= link_to "編集する", customers_my_page_edit_path(@customer.id) %></a>
+      <a><%= link_to "編集する", customers_my_page_edit_path %></a>
       <tbody>
         <table border="1" width="80%">
           <tr>
@@ -34,7 +34,7 @@
       </tbody>
       <nav class="nav">
         <a>注文履歴</a>
-        <a><%= link_to "一覧を見る", orders_path(@customer.id) %></a>
+        <a><%= link_to "一覧を見る", orders_path %></a>
       </nav>
     </div>
   </div>

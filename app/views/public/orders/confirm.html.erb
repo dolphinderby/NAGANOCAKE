@@ -22,6 +22,7 @@
               <td><%= cart.amount %></td>
               <td><%= (cart.item.with_tax_price*cart.amount) %></td>
             </tr>
+            <% @subtotal +=  cart.subtotal %>
           <% end %>
         </tbody>
       </table>
